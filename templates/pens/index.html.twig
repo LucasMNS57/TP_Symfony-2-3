@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pen index{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="display-4 mb-4">Liste des Stylos</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Référence</th>
+                    <th scope="col">Marque</th>
+                    <th scope="col">Matériau</th>
+                    <th scope="col">Couleurs</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pen in pens %}
+                    <tr>
+                        <td>{{ pen.id }}</td>
+                        <td>{{ pen.name }}</td>
+                        <td>{{ pen.price }}</td>
+                        <td>{{ pen.description }}</td>
+                        <td>{{ pen.ref }}</td>
+                        <td>{{ pen.brand.name }}</td>
+                        <td>{{ pen.material.name }}</td>
+                        <td>
+                            {% for color in pen.colors %}
+                                {{ color.name }}
+                                {% if not loop.last %}, {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>{{ pen.type.name }}</td>
+                        <td>
+                            <a href="{{ path('app_pens_show', {'id': pen.id}) }}" class="btn btn-info btn-sm">Details</a>
+                            <a href="{{ path('app_pens_edit', {'id': pen.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="10">Aucun stylo trouvé.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="row mt-4">
+            <div class="col">
+                <a href="{{ path('app_pens_new') }}" class="btn btn-success">Créer un nouveau stylo</a>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col">
+                <a href="{{ path('app_admin_dashboard') }}" class="btn btn-success">Retourner au Dashboard</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

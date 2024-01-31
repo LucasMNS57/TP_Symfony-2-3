@@ -17,7 +17,7 @@ class Color
     private ?int $id = null;
 
     #[ORM\Column(length: 20)]
-    #[Groups('pen:read')]
+    #[Groups('color:read')]
     private ?string $name = null;
 
     #[ORM\ManyToMany(targetEntity: Pen::class, mappedBy: 'colors')]
@@ -71,4 +71,10 @@ class Color
 
         return $this;
     }
+    
+    public function __toString()
+    {
+        return $this->getName() ?? ''; // Retourne le nom ou une chaîne vide si le nom est null
+    }
+
 }

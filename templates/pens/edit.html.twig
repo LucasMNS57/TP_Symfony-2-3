@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Stylo{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="display-4 mb-4">Modifier le Stylo</h1>
+
+        {{ include('pens/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+        <a href="{{ path('app_pens_index') }}" class="btn btn-primary btn-sm">Retour à la liste</a>
+
+        {{ include('pens/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

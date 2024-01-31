@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Brand index{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="display-4 mb-4">Liste des Marques</h1>
+
+        <div class="row">
+            <div class="col">
+                {% if brands is not empty %}
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for brand in brands %}
+                                <tr>
+                                    <td>{{ brand.id }}</td>
+                                    <td>{{ brand.name }}</td>
+                                    <td>
+                                        <a href="{{ path('app_brands_show', {'id': brand.id}) }}" class="btn btn-info btn-sm">Details</a>
+                                        <a href="{{ path('app_brands_edit', {'id': brand.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p class="lead">Aucune marque trouvée.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col">
+                <a href="{{ path('app_brands_new') }}" class="btn btn-success">Créer une nouvelle marque</a>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col">
+                <a href="{{ path('app_admin_dashboard') }}" class="btn btn-success">Retourner au Dashboard</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

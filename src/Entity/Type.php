@@ -17,7 +17,7 @@ class Type
     private ?int $id = null;
 
     #[ORM\Column(length: 20)]
-    #[Groups('pen:read')]
+    #[Groups('type:read')]
     private ?string $name = null;
 
     #[ORM\OneToMany(mappedBy: 'type', targetEntity: Pen::class)]
@@ -73,5 +73,10 @@ class Type
         }
 
         return $this;
+    }
+    
+    public function __toString()
+    {
+        return $this->getName() ?? ''; // Retourne le nom ou une chaîne vide si le nom est null
     }
 }

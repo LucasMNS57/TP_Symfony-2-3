@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau de bord{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="display-4 mb-4">Bienvenue dans le tableau de bord</h1>
+
+        {# Liens vers les opérations CRUD de Color #}
+        <ul class="list-group mb-4">
+            <li class="list-group-item"><a href="{{ path('app_colors_index') }}">Liste des couleurs</a></li>
+            <li class="list-group-item"><a href="{{ path('app_types_index') }}">Liste des types</a></li>
+            <li class="list-group-item"><a href="{{ path('app_brands_index') }}">Liste des marques</a></li>
+            <li class="list-group-item"><a href="{{ path('app_materials_index') }}">Liste des matériaux</a></li>
+            <li class="list-group-item"><a href="{{ path('app_pens_index') }}">Liste des stylos</a></li>
+        </ul>
+
+        <h2>Liste des utilisateurs</h2>
+        <ul class="list-group mb-4">
+            <li class="list-group-item"><a href="{{ path('app_user_index') }}">Liste des utilisateurs</a></li>
+        </ul>
+    </div>
+{% endblock %}

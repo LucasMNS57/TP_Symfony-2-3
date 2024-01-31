@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pen{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="display-4 mb-4">Stylo</h1>
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ pen.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ pen.name }}</td>
+                </tr>
+                <tr>
+                    <th>Prix</th>
+                    <td>{{ pen.price }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ pen.description }}</td>
+                </tr>
+                <tr>
+                    <th>Référence</th>
+                    <td>{{ pen.ref }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_pens_index') }}" class="btn btn-primary btn-sm">Retour à la liste</a>
+        <a href="{{ path('app_pens_edit', {'id': pen.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+
+        {{ include('pens/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

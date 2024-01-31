@@ -17,10 +17,10 @@ class Material
     private ?int $id = null;
 
     #[ORM\Column(length: 20)]
-    #[Groups('pen:read')]
+    #[Groups('material:read')]
     private ?string $name = null;
 
-    #[ORM\OneToMany(mappedBy: 'Material', targetEntity: Pen::class)]
+    #[ORM\OneToMany(mappedBy: 'material', targetEntity: Pen::class, cascade: [])]
     private Collection $pens;
 
     public function __construct()
@@ -73,5 +73,9 @@ class Material
         }
 
         return $this;
+    }
+    public function __toString()
+    {
+        return $this->getName() ?? ''; // Retourne le nom ou une chaîne vide si le nom est null
     }
 }

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Type{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="display-4 mb-4">Détails du Type</h1>
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th scope="row">Id</th>
+                    <td>{{ type.id }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Name</th>
+                    <td>{{ type.name }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_types_index') }}" class="btn btn-primary btn-sm">Retour à la liste</a>
+
+        <a href="{{ path('app_types_edit', {'id': type.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+
+        {{ include('types/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

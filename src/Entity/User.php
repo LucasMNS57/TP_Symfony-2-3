@@ -96,4 +96,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
+    /**
+     * Crée et persiste l'utilisateur administrateur.
+     *
+     * @param EntityManagerInterface $entityManager
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     */
+    public static function createAdminUser(EntityManagerInterface $entityManager, UserPasswordEncoderInterface $passwordEncoder): void
+    {
+        $user = new self();
+        $user->setUsername('demo@apipen.fr');
+        $user->setPassword($passwordEncoder->encodePassword($user, 'azerty'));
+        $user->setRoles(['ROLE_ADMIN']);
+
+        $entityManager->persist($user);
+        $entityManager->flush();
+    }
 }
+

@@ -12,3 +12,18 @@ app.swagger_ui:
     path: /api/doc
     methods: GET
     defaults: { _controller: nelmio_api_doc.controller.swagger_ui }
+
+app_homepage:
+    path: /
+    controller: App\Controller\Api\PenController::index
+
+# config/routes.yaml
+app_admin_dashboard:
+    path: '/admin/dashboard'
+    controller: 'App\Controller\Admin\DashboardController::index'
+
+# config/routes.yaml
+app_admin_colors:
+    path: '/admin/colors'
+    controller: 'App\Controller\Admin\ColorController::index'
+

@@ -17,7 +17,7 @@ class Brand
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
-    #[Groups('pen:read')]
+    #[Groups('brand:read')]
     private ?string $name = null;
 
     #[ORM\OneToMany(mappedBy: 'brand', targetEntity: Pen::class)]
@@ -73,5 +73,10 @@ class Brand
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getName() ?? ''; // Retourne le nom ou une chaîne vide si le nom est null
     }
 }

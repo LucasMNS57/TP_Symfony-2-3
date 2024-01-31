@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Couleur{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="display-4 mb-4">Modifier la Couleur</h1>
+
+        {{ include('colors/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+        <a href="{{ path('app_colors_index') }}" class="btn btn-secondary btn-sm">Retour à la liste</a>
+
+        {{ include('colors/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

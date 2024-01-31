@@ -30,7 +30,7 @@ class Pen
     #[Groups('pen:read')]
     private ?string $description = null;
 
-    #[ORM\Column(length: 10, unique: true)]
+    #[ORM\Column(length: 255, unique: true)]
     #[Groups('pen:read')]
     private ?string $ref = null;
 
